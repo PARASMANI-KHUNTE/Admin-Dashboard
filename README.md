@@ -152,7 +152,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 For any questions or feedback, feel free to reach out:  
 - **Parasmani Khunte**  
 - GitHub: [PARASMANI-KHUNTE](https://github.com/PARASMANI-KHUNTE)  
-- Email: [your-email@example.com](parasmanikhunte@gmail.com)
+- Email: [parasmanikhunte@gmail.com](parasmanikhunte@gmail.com)
 
 ---
 
