@@ -18,7 +18,9 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
-app.use(cors())
+app.use(cors({
+  origin : "https://admin-dashboard-js6u.onrender.com"
+}))
 // Routes
 app.use('/api/admin', adminRoutes);
 app.use('/api/hotels', hotelsRoutes);
