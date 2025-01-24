@@ -11,7 +11,7 @@ const Signup = () => {
         e.preventDefault();
         try {
             const response = await axios.post('https://admin-dashboard-server-8ggt.onrender.com/api/admin/register', { email, password });
-            if (response == 200){
+            if (response == 201){
                 navigate('/login')
             }
           
