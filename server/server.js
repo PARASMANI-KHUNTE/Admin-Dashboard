@@ -35,7 +35,9 @@ db()
 // });
 // setupWebSocket(server);
 
-
+app.get('/test', (req, res) => {
+  res.status(200).send('Server is up.');
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port http://localhost:${PORT}`);
