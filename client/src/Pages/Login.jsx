@@ -11,7 +11,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/api/admin/login', { email, password });
+            const response = await axios.post('https://admin-dashboard-server-8ggt.onrender.com/api/admin/login', { email, password });
             localStorage.setItem('token', response.data.token);
             navigate('/dashboard');
         } catch (err) {

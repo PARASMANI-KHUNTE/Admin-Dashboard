@@ -21,7 +21,7 @@ const Vehicles = () => {
 
   const fetchVehicles = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/vehicles', {
+      const response = await axios.get('https://admin-dashboard-server-8ggt.onrender.com/api/vehicles', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setVehicles(response.data);
@@ -32,7 +32,7 @@ const Vehicles = () => {
 
   const fetchRegions = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/regions', {
+      const response = await axios.get('https://admin-dashboard-server-8ggt.onrender.com/api/regions', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRegions(response.data);
@@ -53,9 +53,9 @@ const Vehicles = () => {
         headers: { Authorization: `Bearer ${token}` },
       };
       if (editVehicleId) {
-        await axios.put(`http://localhost:3000/api/vehicles/${editVehicleId}`, formData, config);
+        await axios.put(`https://admin-dashboard-server-8ggt.onrender.com/api/vehicles/${editVehicleId}`, formData, config);
       } else {
-        await axios.post('http://localhost:3000/api/vehicles', formData, config);
+        await axios.post('https://admin-dashboard-server-8ggt.onrender.com/api/vehicles', formData, config);
       }
       setShowForm(false);
       setFormData({ type: '', price: '', regionId: '' });
@@ -74,7 +74,7 @@ const Vehicles = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/vehicles/${id}`, {
+      await axios.delete(`https://admin-dashboard-server-8ggt.onrender.com/api/vehicles/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchVehicles();

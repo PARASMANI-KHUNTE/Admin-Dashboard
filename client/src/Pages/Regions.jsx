@@ -16,7 +16,7 @@ const Regions = () => {
 
   const fetchRegions = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/regions', {
+      const response = await axios.get('https://admin-dashboard-server-8ggt.onrender.com/api/regions', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setRegions(response.data);
@@ -47,11 +47,11 @@ const Regions = () => {
     e.preventDefault();
     try {
       if (editRegionId) {
-        await axios.put(`http://localhost:3000/api/regions/${editRegionId}`, formData, {
+        await axios.put(`https://admin-dashboard-server-8ggt.onrender.com/api/regions/${editRegionId}`, formData, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
       } else {
-        await axios.post('http://localhost:3000/api/regions', formData, {
+        await axios.post('https://admin-dashboard-server-8ggt.onrender.com/api/regions', formData, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
       }
@@ -72,7 +72,7 @@ const Regions = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/regions/${id}`, {
+      await axios.delete(`https://admin-dashboard-server-8ggt.onrender.com/api/regions/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       fetchRegions();

@@ -10,7 +10,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/api/admin/register', { email, password });
+            const response = await axios.post('https://admin-dashboard-server-8ggt.onrender.com/api/admin/register', { email, password });
             if (response == 200){
                 navigate('/login')
             }

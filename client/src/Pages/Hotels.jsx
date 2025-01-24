@@ -18,7 +18,7 @@ const Hotels = () => {
 
   const fetchHotels = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/hotels', {
+      const response = await axios.get('https://admin-dashboard-server-8ggt.onrender.com/api/hotels', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setHotels(response.data);
@@ -29,7 +29,7 @@ const Hotels = () => {
 
   const fetchRegions = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/regions', {
+      const response = await axios.get('https://admin-dashboard-server-8ggt.onrender.com/api/regions', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setRegions(response.data);
@@ -47,11 +47,11 @@ const Hotels = () => {
     e.preventDefault();
     try {
       if (editHotelId) {
-        await axios.put(`http://localhost:3000/api/hotels/${editHotelId}`, formData, {
+        await axios.put(`https://admin-dashboard-server-8ggt.onrender.com/api/hotels/${editHotelId}`, formData, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
       } else {
-        await axios.post('http://localhost:3000/api/hotels', formData, {
+        await axios.post('https://admin-dashboard-server-8ggt.onrender.com/api/hotels', formData, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
       }
@@ -72,7 +72,7 @@ const Hotels = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/hotels/${id}`, {
+      await axios.delete(`https://admin-dashboard-server-8ggt.onrender.com/api/hotels/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       fetchHotels();
