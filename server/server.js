@@ -8,6 +8,7 @@ const hotelsRoutes = require('./routes/hotelsRoutes');
 const vehiclesRoutes = require('./routes/vehiclesRoutes');
 const regionsRoutes = require('./routes/regionsRoutes');
 // const  setupWebSocket  = require('./config/websocket');
+const cors = require('cors')
 
 // Load environment variables
 dotenv.config();
@@ -17,7 +18,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
-
+app.use(cors())
 // Routes
 app.use('/api/admin', adminRoutes);
 app.use('/api/hotels', hotelsRoutes);
