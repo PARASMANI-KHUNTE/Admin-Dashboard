@@ -18,9 +18,8 @@ const Signup = () => {
     // Handle success response (201 Created)
     if (response.status === 201) {
       setMessage('Admin registered successfully! Redirecting to login...');
-      setTimeout(() => {
-        navigate('/login'); // Navigate to login after a short delay
-      }, 2000); // 2 seconds delay
+      navigate('/login'); // Navigate to login after a short delay
+ 
     }
   } catch (error) {
     // Handle errors
