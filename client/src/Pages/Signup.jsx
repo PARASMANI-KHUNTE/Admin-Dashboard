@@ -8,18 +8,46 @@ const Signup = () => {
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post('https://admin-dashboard-server-8ggt.onrender.com/api/admin/register', { email, password });
-            if (response == 201){
-                navigate('/login')
-            }
-          
-        } catch (error) {
-            setMessage(error.response.data.message);
-        }
-    };
+  e.preventDefault();
+  try {
+    const response = await axios.post(
+      'https://admin-dashboard-server-8ggt.onrender.com/api/admin/register',
+      { email, password }
+    );
 
+    // Handle success response (201 Created)
+    if (response.status === 201) {
+      setMessage('Admin registered successfully! Redirecting to login...');
+      setTimeout(() => {
+        navigate('/login'); // Navigate to login after a short delay
+      }, 2000); // 2 seconds delay
+    }
+  } catch (error) {
+    // Handle errors
+    if (error.response) {
+      // Backend responded with an error status code (4xx or 5xx)
+      switch (error.response.status) {
+        case 400:
+          setMessage(error.response.data.message || 'Invalid input. Please check your email and password.');
+          break;
+        case 409:
+          setMessage(error.response.data.message || 'Admin with this email already exists.');
+          break;
+        case 500:
+          setMessage(error.response.data.message || 'Server error. Please try again later.');
+          break;
+        default:
+          setMessage('An unexpected error occurred. Please try again.');
+      }
+    } else if (error.request) {
+      // No response received from the server
+      setMessage('No response from the server. Please check your internet connection.');
+    } else {
+      // Something went wrong in setting up the request
+      setMessage('An unexpected error occurred. Please try again.');
+    }
+  }
+};
     return (
         <div className="flex h-screen">
             <div className="w-1/2 bg-blue-500 text-white flex flex-col justify-center items-center">
