@@ -23,15 +23,31 @@ const loginAdmin = async (req, res) => {
 const registerAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    // Check if email and password are provided
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' });
+    }
+
+    // Check if the admin already exists
+    const existingAdmin = await Admin.findOne({ email });
+    if (existingAdmin) {
+      return res.status(409).json({ message: 'Admin with this email already exists' });
+    }
+
+    // Hash the password
     const hashedPassword = await argon2.hash(password);
 
+    // Create and save the new admin
     const newAdmin = new Admin({ email, password: hashedPassword });
     await newAdmin.save();
 
+    // Success response
     res.status(201).json({ message: 'Admin registered successfully' });
   } catch (err) {
+    // Handle server errors
+    console.error('Error in registerAdmin:', err);
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 };
-
 module.exports = { loginAdmin, registerAdmin };
